@@ -48,7 +48,6 @@ router.get("/user", authMiddleware.verifyJWT, authController.getCurrentUser);
  */
 router.post(
   "/forgotpassword",
-  authMiddleware.verifyJWT,
   validate(forgotPasswordSchema),
   authController.forgotPassword,
 );
@@ -59,7 +58,6 @@ router.post(
  */
 router.post(
   "/resetpassword/:token",
-  authMiddleware.verifyJWT,
   validate(resetPasswordSchema),
   authController.resetPassword,
 );

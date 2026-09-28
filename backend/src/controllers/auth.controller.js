@@ -55,6 +55,7 @@ const registerUser = async (req, res) => {
  * - log in User
  */
 const loginUser = async (req, res) => {
+  console.log("first")
   try {
     const { email, password } = req.body;
     const user = await userModel.findOne({ email }).select("+password");
@@ -133,8 +134,9 @@ const logoutUser = async (req, res) => {
  * - refresh token endpoint
  */
 const refreshAccessToken = async (req, res) => {
+
   try {
-    const refreshToken = res.cookies.refreshToken;
+    const refreshToken = req.cookies.refreshToken;
     if (!refreshToken) {
       return res.status(401).json({
         message: "refresh token not found",
@@ -256,6 +258,8 @@ const resetPassword = async (req, res) => {
   try {
     const { token } = req.params;
     const { password } = req.body;
+
+    console.log(password , token)
 
     const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
 

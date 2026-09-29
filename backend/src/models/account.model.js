@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const accountSchema = new mongoose.Schema(
   {
-    userId: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
       required: true,
@@ -26,17 +26,29 @@ const accountSchema = new mongoose.Schema(
         ],
       },
     },
+    institution: {
+      type: String,
+      trim: true,
+      maxlength: 100,
+    },
+
+    last4: {
+      type: String,
+      match: /^\d{4}$/,
+    },
     balance: {
       type: Number,
       required: true,
+      default: 0,
     },
     currency: {
       type: String,
       required: true,
+      default: "INR",
     },
     isActive: {
       type: Boolean,
-      required: true,
+      default: true,
     },
     transactions: [
       {

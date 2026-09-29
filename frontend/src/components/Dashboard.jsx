@@ -1,6 +1,7 @@
 import React from "react";
 import { logoutUser } from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Dashboard = () => {
   };
   return (
     <div>
-      
+      <Navbar/>
     </div>
   );
 };
